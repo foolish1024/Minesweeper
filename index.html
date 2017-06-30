@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="Minesweeper">
+<head>
+    <meta charset="utf-8">
+    <title>Minesweeper</title>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="js/modules.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <div ng-controller="MinesweeperController">
+        <table class="minefield" border="1">
+            <tr ng-repeat="row in minefield.rows">
+            <td ng-repeat="spot in row.spots" ng-click="uncoverSpot(spot)" ng-right-click="setFlag(spot)">
+                <mine-grid></mine-grid>
+            </td>
+            </tr>
+        </table>
+        <br/><br/>
+        <button class="btn btn-primary" ng-click="restart();">重新开始</button>
+        <p class="text-success" ng-show="isWinMsgVisible">
+        恭喜您，游戏胜利！！！
+        </p>
+        <p class="text-danger" ng-show="isLostMsgVisible">
+        很遗憾，游戏失败！！！
+        </p>
+    </div>
+</body>
+</html>
